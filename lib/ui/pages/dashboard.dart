@@ -5,7 +5,6 @@ import 'package:symfonia/core/bloc/get_coins/get_coin_bloc.dart';
 import 'package:symfonia/models/coin_response.dart';
 import 'package:symfonia/ui/pages/components/build_error.dart';
 import 'package:symfonia/utils/colors_consts.dart';
-
 import 'components/build_loading.dart';
 import 'components/custom_header.dart';
 
