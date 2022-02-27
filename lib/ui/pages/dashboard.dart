@@ -131,6 +131,8 @@ Widget buildCoinsTest(CoinResponse response, context) {
                 response.coins[index].marketCapChangePercentage24H > 0
                     ? "+${response.coins[index].marketCapChangePercentage24H.toStringAsFixed(2)} %"
                     : "${response.coins[index].marketCapChangePercentage24H.toStringAsFixed(2)} %",
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.bold,
                   color: response.coins[index].marketCapChangePercentage24H > 0
