@@ -8,7 +8,6 @@ import 'package:symfonia/ui/pages/profile.dart';
 import 'package:symfonia/ui/pages/task.dart';
 import 'package:symfonia/utils/colors_consts.dart';
 import 'package:symfonia/utils/images.dart';
-
 import '../components/custom_navigation_bar.dart';
 
 class Home extends StatefulWidget {
