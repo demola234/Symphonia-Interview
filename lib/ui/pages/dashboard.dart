@@ -121,7 +121,7 @@ Widget buildCoinsTest(CoinResponse response, context) {
                               ),
                             ),
                             Text(
-                              "${DateFormat.jms().add_yMMMd().format(response.coins[index].lastUpdated)}",
+                              "${DateFormat.ms().addPattern(",").add_yMMMd().format(response.coins[index].lastUpdated)}",
                               style: GoogleFonts.poppins(
                                 color: ColorPath.GREY,
                                 fontWeight: FontWeight.w600,
