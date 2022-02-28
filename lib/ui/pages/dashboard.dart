@@ -70,75 +70,85 @@ Widget buildCoinsTest(CoinResponse response, context) {
         physics: BouncingScrollPhysics(),
         itemCount: response.coins.length,
         itemBuilder: (BuildContext context, index) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          return Column(
             children: [
-              Row(children: [
-                Container(
-                  padding: EdgeInsets.all(20.0),
-                  height: 90,
-                  width: 60,
-                  decoration: BoxDecoration(
-                    color: ColorPath.WHITE,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  child: Image(
-                    fit: BoxFit.contain,
-                    image: NetworkImage(response.coins[index].image),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  width: 200,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(children: [
+                    Container(
+                      padding: EdgeInsets.all(20.0),
+                      height: 90,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: ColorPath.WHITE,
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                      child: Image(
+                        fit: BoxFit.contain,
+                        image: NetworkImage(response.coins[index].image),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 200,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              response.coins[index]
+                                          .marketCapChangePercentage24H >
+                                      0
+                                  ? "Received"
+                                  : "Sent",
+                              style: GoogleFonts.poppins(
+                                color: ColorPath.GREY,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              "\$${response.coins[index].currentPrice.toStringAsFixed(1)} ${response.coins[index].name}",
+                              textAlign: TextAlign.left,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(
+                                color: ColorPath.BLACK,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "${DateFormat.jms().add_yMMMd().format(response.coins[index].lastUpdated)}",
+                              style: GoogleFonts.poppins(
+                                color: ColorPath.GREY,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          ]),
+                    ),
+                  ]),
+                  Text(
+                    response.coins[index].marketCapChangePercentage24H > 0
+                        ? "+${response.coins[index].marketCapChangePercentage24H.toStringAsFixed(1)} %"
+                        : "${response.coins[index].marketCapChangePercentage24H.toStringAsFixed(1)} %",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.bold,
+                      color:
                           response.coins[index].marketCapChangePercentage24H > 0
-                              ? "Received"
-                              : "Sent",
-                          style: GoogleFonts.poppins(
-                            color: ColorPath.GREY,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Text(
-                          "\$${response.coins[index].currentPrice.roundToDouble()} ${response.coins[index].name}",
-                          textAlign: TextAlign.left,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.poppins(
-                            color: ColorPath.BLACK,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "${DateFormat.ms().add_yMMMd().format(response.coins[index].lastUpdated)}",
-                          style: GoogleFonts.poppins(
-                            color: ColorPath.GREY,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        )
-                      ]),
-                ),
-              ]),
-              Text(
-                response.coins[index].marketCapChangePercentage24H > 0
-                    ? "+${response.coins[index].marketCapChangePercentage24H.toStringAsFixed(2)} %"
-                    : "${response.coins[index].marketCapChangePercentage24H.toStringAsFixed(2)} %",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.bold,
-                  color: response.coins[index].marketCapChangePercentage24H > 0
-                      ? ColorPath.GREEN
-                      : ColorPath.RED,
-                  fontSize: 16,
-                ),
+                              ? ColorPath.GREEN
+                              : ColorPath.RED,
+                      fontSize: 16,
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 8.0,
               )
             ],
           );

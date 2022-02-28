@@ -1,7 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:symfonia/models/coin_response.dart';
 
-class FetchCoinRepository {
+abstract class FetchCoinRepository {
+  Future<CoinResponse> getCoinData();
+}
+
+class FetchCoinRepositoryImp implements FetchCoinRepository {
   static String mainUrl = "https://api.coingecko.com/api/v3";
 
   Dio _dio = Dio();
@@ -11,7 +15,7 @@ class FetchCoinRepository {
     var parmas = {
       "vs_currency": "usd",
       "order": "market_cap_desc",
-      "per_page": 100,
+      "per_page": 200,
       "page": 1,
       "sparkline": false
     };

@@ -4,7 +4,7 @@ import 'package:symfonia/models/coin_response.dart';
 
 class CoinBloc {
   /// Initializing The Network Repository
-  final FetchCoinRepository _fetchCoinRepository = FetchCoinRepository();
+  final FetchCoinRepositoryImp _fetchCoinRepository = FetchCoinRepositoryImp();
   final BehaviorSubject<CoinResponse> _subject =
       BehaviorSubject<CoinResponse>();
 
